@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class OtherActivity extends AppCompatActivity {
@@ -14,18 +15,15 @@ public class OtherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other);
 
-        Intent intent=getIntent();
-        String name=intent.getStringExtra("name");
-        Integer age=intent.getIntExtra("age",20);
-        Toast.makeText(this, name+age+"岁", Toast.LENGTH_SHORT).show();
+        TextView textView=(TextView)findViewById(R.id.tex_show);
 
-        Button btn=(Button)findViewById(R.id.returnActivity);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(OtherActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        //取得启动该Activity的Intent对象
+        Intent intent=getIntent();
+        //取出Intent中传递的数据
+        //得根据传递的数据类型取值
+        String name=intent.getStringExtra("name");
+        //若没有取到值则按默认值18显示
+        Integer age=intent.getIntExtra("age",18);
+        textView.setText(name+age+"岁");
     }
 }

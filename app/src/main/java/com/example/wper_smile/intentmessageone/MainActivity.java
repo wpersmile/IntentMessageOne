@@ -17,7 +17,10 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //向指定Activity传递消息
                 Intent intent=new Intent(MainActivity.this,OtherActivity.class);
+
+                //使用intent.putExtra(键名,键值)传递参数
                 intent.putExtra("name","大黄");
                 intent.putExtra("age",20);
                 startActivity(intent);
